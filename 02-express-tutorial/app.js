@@ -6,11 +6,11 @@ const app = express();
 // setup static and middleware
 app.use(express.static('./public'));
 
-app.get('/', (req, res) => {
-  //   console.log(path.resolve(__dirname, './navbar-app/index.html'));
-  //   console.log(path.join(__dirname, './navbar-app/index.html'));
-  res.sendFile(path.resolve(__dirname, './navbar-app/index.html'));
-});
+// app.get('/', (req, res) => {
+//   //   console.log(path.resolve(__dirname, './navbar-app/index.html'));
+//   //   console.log(path.join(__dirname, './navbar-app/index.html'));
+//   res.sendFile(path.resolve(__dirname, './navbar-app/index.html'));
+// });
 
 app.all('*', (req, res) => {
   res.status(404).send('<h1>Resource not found</h1>');
