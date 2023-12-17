@@ -1,20 +1,15 @@
 const express = require('express');
+const path = require('path');
+
 const app = express();
 
+// setup static and middleware
+app.use(express.static('./public'));
+
 app.get('/', (req, res) => {
-  console.log('User hit the resource');
-  res.status(200).send('Home page');
-});
-
-app.get('/about', (req, res) => {
-  res.status(200).send('About page');
-});
-
-// To manually set the Content-Type header for res.send() responses, you can use the res.set() or res.setHeader() methods.
-app.get('/api/data', (req, res) => {
-  const data = 'Hello, world!';
-  res.set('Content-Type', 'text/plain');
-  res.send(data);
+  //   console.log(path.resolve(__dirname, './navbar-app/index.html'));
+  //   console.log(path.join(__dirname, './navbar-app/index.html'));
+  res.sendFile(path.resolve(__dirname, './navbar-app/index.html'));
 });
 
 app.all('*', (req, res) => {
