@@ -1,8 +1,12 @@
 const http = require('http');
 
 const server = http.createServer((req, res) => {
-  console.log('User hit the server');
-  res.end('Home page');
+  //   res.writeHead(200, { 'content-type': 'text/html' });
+  //   res.end('<h1>Home page</h1>');
+  res.writeHead(200, { 'content-type': 'text/html' });
+  //   res.writeHead(200, { 'content-type': 'text/plain' });
+  res.write('<h1>Home page</h1>');
+  res.end();
 });
 
 server.listen(5000);
