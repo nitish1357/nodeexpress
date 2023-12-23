@@ -14,6 +14,10 @@ const auth = async (req, res, next) => {
   try {
     const payload = jwt.verify(token, process.env.JWT_SECRET);
 
+    // another way to attach user to the job routes
+    // const user = User.findById(payload.id).select(-password);
+    // req.user = user;
+
     // attach user to the job routes
     req.user = { userId: payload.userId, name: payload.name };
     next();
