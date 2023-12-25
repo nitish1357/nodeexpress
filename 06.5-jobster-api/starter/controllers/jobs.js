@@ -145,9 +145,21 @@ const showStats = async (req, res) => {
     { $limit: 6 },
   ]);
 
-  console.log(monthlyApplications);
+  monthlyApplications = monthlyApplications
+    .map((item) => {
+      const {
+        _id: { year, month },
+        count,
+      } = item;
+      const date = moment()
+        .month(month - 1)
+        .year(year)
+        .format('MMM Y');
+      return { date, count };
+    })
+    .reverse();
 
-  res.status(StatusCodes.OK).json({ defaultStats, monthlyApplications: [] });
+  res.status(StatusCodes.OK).json({ defaultStats, monthlyApplications });
 };
 
 module.exports = {
