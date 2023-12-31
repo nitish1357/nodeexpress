@@ -11,7 +11,7 @@ const updateUser = async (req, res) => {
   res.send('update user');
 };
 const updateUserPassword = async (req, res) => {
-  res.send('update user password');
+  res.send(req.body);
 };
 
 module.exports = {
